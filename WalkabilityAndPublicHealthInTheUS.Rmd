@@ -76,8 +76,8 @@ Download the data which has already undergone the pre-processing methodology des
 WARNING: this may take several minutes. To avoid unnecessary downloads, the commands are commented out. Un-comment and execute the commands to download the data.
 
 ```{r Download the data, echo=TRUE }
-#download.file("https://walkabilityandhealth.blob.core.windows.net/walkabilityandhealth/disease_with_walkability.zip", destfile="disease_with_walkability.zip")
-#unzip("disease_with_walkability.zip", "disease_with_walkability.csv")
+download.file("https://walkabilityandhealth.blob.core.windows.net/walkabilityandhealth/disease_with_walkability.zip", destfile="disease_with_walkability.zip")
+unzip("disease_with_walkability.zip", "disease_with_walkability.csv")
 ```
 ```{r load the data}
 
@@ -185,3 +185,31 @@ The tigris library provides a function "block_groups" which returns geographic i
 ``` {r export the processed and merged data to a csv}
 #write.csv(disease_with_walkability, file = "disease_with_walkability.csv")
 ```
+
+
+
+
+
+## Kienan Work
+```{r}
+library(ggplot2)
+library(scales)
+
+ggplot(data=disease_with_walkability,aes(x=Topic))+geom_bar()+coord_flip()
+ggplot(data=disease_with_walkability,aes(x=BLKGRPCE))+geom_bar()+xlab("Scale of Walkability")+ylab("Frequency")+theme(axis.ticks.x = element_line())+scale_y_continuous(labels = number)
+summary(as.factor(disease_with_walkability$BLKGRPCE))
+```
+
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
